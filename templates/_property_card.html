@@ -1,0 +1,16 @@
+<article class="property-card h-100">
+  <a href="{{ url_for('detail', property_id=property.id) }}" class="property-image-link">
+    <img src="{{ property.image_url }}" alt="{{ property.title }}" class="property-image">
+  </a>
+  <div class="property-card-body">
+    <div class="d-flex justify-content-between align-items-start gap-3">
+      <div>
+        <p class="property-price mb-1">{{ property.formatted_price }}</p>
+        <h3 class="property-title mb-1">{{ property.title }}</h3>
+      </div>
+      <span class="badge text-bg-light">{{ property.property_type }}</span>
+    </div>
+    <p class="property-location mb-3">{{ property.location }}</p>
+    <a class="btn btn-sm btn-outline-primary" href="{{ url_for('detail', property_id=property.id) }}">View details</a>
+  </div>
+</article>

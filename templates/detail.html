@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}{{ property.title }} | EstateFlow{% endblock %}
+
+{% block content %}
+<section class="container detail-page">
+  <div class="row g-4">
+    <div class="col-lg-7">
+      <div class="gallery-main mb-3">
+        <img src="{{ property.image_url }}" alt="{{ property.title }}">
+      </div>
+      <div class="row g-3">
+        <div class="col-4"><img class="gallery-thumb" src="{{ property.image_url }}" alt="{{ property.title }} view 1"></div>
+        <div class="col-4"><img class="gallery-thumb" src="{{ property.image_url }}" alt="{{ property.title }} view 2"></div>
+        <div class="col-4"><img class="gallery-thumb" src="{{ property.image_url }}" alt="{{ property.title }} view 3"></div>
+      </div>
+    </div>
+    <div class="col-lg-5">
+      <div class="detail-panel">
+        <span class="badge text-bg-primary mb-3">{{ property.property_type }}</span>
+        <h1>{{ property.title }}</h1>
+        <p class="detail-location">{{ property.location }}</p>
+        <p class="detail-price">{{ property.formatted_price }}</p>
+        <p class="text-muted">{{ property.description }}</p>
+
+        <h2 class="h5 mt-4">Amenities</h2>
+        <div class="amenity-list">
+          {% for amenity in property.amenities %}
+            <span>{{ amenity.name }}</span>
+          {% else %}
+            <span>Contact agent for amenities</span>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-lg-7">
+      <div class="contact-panel">
+        <h2>Contact about this property</h2>
+        <form method="post" class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label" for="name">Name</label>
+            <input class="form-control" id="name" name="name" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="email">Email</label>
+            <input class="form-control" id="email" name="email" type="email" required>
+          </div>
+          <div class="col-12">
+            <label class="form-label" for="message">Message</label>
+            <textarea class="form-control" id="message" name="message" rows="5" required>I am interested in {{ property.title }}.</textarea>
+          </div>
+          <div class="col-12">
+            <button class="btn btn-primary" type="submit">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

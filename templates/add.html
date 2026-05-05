@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Add Property | EstateFlow{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <div class="container">
+    <p class="eyebrow text-primary">Admin</p>
+    <h1>Add a new property</h1>
+  </div>
+</section>
+
+<section class="container pb-5">
+  <div class="form-shell">
+    <form method="post" enctype="multipart/form-data" class="row g-3">
+      <div class="col-md-8">
+        <label class="form-label" for="title">Title</label>
+        <input class="form-control" id="title" name="title" required>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label" for="price">Price</label>
+        <input class="form-control" id="price" name="price" type="number" min="0" step="1000" required>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label" for="city">City</label>
+        <input class="form-control" id="city" name="city" required>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label" for="location">Location</label>
+        <input class="form-control" id="location" name="location" required>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label" for="property_type">Property Type</label>
+        <select class="form-select" id="property_type" name="property_type" required>
+          <option value="">Choose type</option>
+          <option>Apartment</option>
+          <option>Villa</option>
+          <option>Studio</option>
+          <option>House</option>
+          <option>Plot</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label" for="image">Image Upload</label>
+        <input class="form-control" id="image" name="image" type="file" accept="image/*">
+      </div>
+      <div class="col-12">
+        <label class="form-label" for="amenities">Amenities</label>
+        <input class="form-control" id="amenities" name="amenities" placeholder="Pool, Gym, Parking, Security">
+      </div>
+      <div class="col-12">
+        <label class="form-label" for="description">Description</label>
+        <textarea class="form-control" id="description" name="description" rows="6" required></textarea>
+      </div>
+      <div class="col-12">
+        <div class="form-check">
+          <input class="form-check-input" id="featured" name="featured" type="checkbox">
+          <label class="form-check-label" for="featured">Mark as featured</label>
+        </div>
+      </div>
+      <div class="col-12">
+        <button class="btn btn-primary btn-lg" type="submit">Save Property</button>
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock %}

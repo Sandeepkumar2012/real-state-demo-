@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}EstateFlow | Find Your Next Home{% endblock %}
+
+{% block content %}
+<section class="hero-section">
+  <div class="container">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-7">
+        <p class="eyebrow">Premium real estate marketplace</p>
+        <h1>Find homes that fit the way you live.</h1>
+        <p class="lead">Search curated apartments, villas, studios, houses, and plots across growing city neighborhoods.</p>
+      </div>
+      <div class="col-lg-5">
+        <form class="search-panel" action="{{ url_for('listings') }}" method="get">
+          <div class="mb-3">
+            <label class="form-label" for="city">Location</label>
+            <input class="form-control form-control-lg" id="city" name="city" placeholder="City, neighborhood, or area">
+          </div>
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label class="form-label" for="min_price">Min Price</label>
+              <input class="form-control" id="min_price" name="min_price" type="number" min="0" placeholder="250000">
+            </div>
+            <div class="col-sm-6">
+              <label class="form-label" for="max_price">Max Price</label>
+              <input class="form-control" id="max_price" name="max_price" type="number" min="0" placeholder="900000">
+            </div>
+          </div>
+          <div class="mt-3">
+            <label class="form-label" for="property_type">Property Type</label>
+            <select class="form-select" id="property_type" name="property_type">
+              <option value="">Any type</option>
+              <option>Apartment</option>
+              <option>Villa</option>
+              <option>Studio</option>
+              <option>House</option>
+              <option>Plot</option>
+            </select>
+          </div>
+          <button class="btn btn-primary btn-lg w-100 mt-4" type="submit">Search Properties</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container section-space">
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-4">
+    <div>
+      <p class="eyebrow text-primary">Featured</p>
+      <h2 class="section-title">Homes worth a closer look</h2>
+    </div>
+    <a class="btn btn-outline-primary" href="{{ url_for('listings') }}">View all listings</a>
+  </div>
+  <div class="row g-4">
+    {% for property in featured_properties %}
+      <div class="col-md-6 col-xl-4">
+        {% include "_property_card.html" %}
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
